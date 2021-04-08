@@ -22,18 +22,13 @@ html {
   body {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 8vh 7vh auto; 
+    grid-template-rows: 8vh auto; 
   }
 
   /* ID's */
-  #points {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-  }
-
   #timer {
     grid-column: 1 / 2;
-    grid-row: 3 / 4;    
+    grid-row: 2 / 3;    
   }
 
   #title {
@@ -52,9 +47,28 @@ html {
     margin-left: 40px;
   }
 
+  .flex_center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
   .flex_center_spaced_evenly {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+  }
+
+  .timeInput {
+    width: 80px;
+  }
+
+  .submitButton {
+    background-color: magenta;
+  }
+
+  .submitButton:hover {
+    background-color: blue;
   }

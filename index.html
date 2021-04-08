@@ -7,35 +7,30 @@
     <title>Working title</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script src="script.js"></script>
+<script src="script_test.js"></script>
 <body>
     <div id="title">
-        <h1 class="center_vertically spaced_from_left_px">Working Title</h1>
+        <h1 class="flex_center_spaced_evenly">Working Title</h1>
     </div>
-    <!-- <div id="points">
-        <h2 class="center_vertically spaced_from_left_px">Punten: </h2>
-    </div> -->
 
     <div id="timer">
         <h2 class="flex_center_spaced_evenly">Tijd instellen</h2>
-
-        <form id="timerForm" class="timer" onsubmit="startTimer()">
+        <div>
             <div class="flex_center_spaced_evenly">
-                <input id="timerHours" type="number"  placeholder="uren" min="0" max="23" value="0">
-                <p>:</p>
-                <input id="timerMinutes" type="number" placeholder="minuten" min="0" max="59" value="0">
-            </div>
-            <div class="flex_center_spaced_evenly">
-                <input type="submit" value="Submit">
-            </div>
-            
-            
-        </form>
+                <div class="flex_center_spaced_evenly">
+                    <input class="timeInput" id="inputHour" placeholder="uren" value="0" type="number">
+                    <p> : </p>
+                    <input class="timeInput" id="inputMinutes" placeholder="minuten" value="0" type="number" min="0" max="59" >
+                </div>
+                <button class="submitButton" type="submit" onclick="startTimer()">Start Timer</button>
 
-        <div id="timerDisplay" class="flex_center_spaced_evenly">
-            <p id="hours">00</p>
-            <p>:</p>
-            <p id="mins">00</p>
+            </div>
+            <div class="flex_center">
+                <p id="timerOutputHours"></p>
+                <p id=timerOutputDots> : </p>
+                <p id="timerOutputMins"></p>
+                <h2 id="timerEnded"></h2>
+            </div>
         </div>
     </div>
 
