@@ -79,6 +79,9 @@ function timerTest(){
 
 function test() {
     receiveData(apiKey2);
+}
+
+function storeServer1Data() {
     serverResponse = this.responseText;
     console.log("Response from key: " + apiKey2);
     console.log("> " + serverResponse);
@@ -95,7 +98,7 @@ function receiveData(apiKey) {
     console.log("Requesting data from: " + requestString);
 
     var server = new XMLHttpRequest();
-    server.onload = test;
+    server.onload = storeServer1Data;
     server.open("GET", requestString);
     server.send();
 }
