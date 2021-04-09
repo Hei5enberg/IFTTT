@@ -10,20 +10,19 @@
 <script src="script.js"></script>
 <body>
     <div id="title">
-        <h1 class="flex_center_spaced_evenly">Working Title</h1>
+        <h1 class="flex_center_spaced_evenly">Header</h1>
     </div>
 
     <div id="timer">
-        <h2 class="flex_center_spaced_evenly">Tijd instellen</h2>
+        <h2 class="flex_center_spaced_evenly">Timer</h2>
         <div>
             <div class="flex_center_spaced_evenly">
                 <div class="flex_center_spaced_evenly">
-                    <input class="timeInput" id="inputHour" placeholder="uren" value="0" type="number">
+                    <input class="time_input" id="inputHour" placeholder="uren" type="number" min="0" max="23">
                     <p> : </p>
-                    <input class="timeInput" id="inputMinutes" placeholder="minuten" value="0" type="number" min="0" max="59" >
+                    <input class="time_input" id="inputMinutes" placeholder="minuten" type="number" min="0" max="59" >
                 </div>
-                <button class="submitButton" type="submit" onclick="startTimer()">Start Timer</button>
-
+                <button class="button1" type="submit" onclick="startTimer()">Start Timer</button>
             </div>
             <div class="flex_center">
                 <p id="timerOutputHours"></p>
@@ -34,5 +33,10 @@
         </div>
     </div>
 
+    <div id="server_test">
+        <h2>Data van server:</h2>
+        <p id="serverResponse"></p>
+        <button onclick="test()" class="button1">TEST</button>
+    </div>
 </body>
 </html>

@@ -22,18 +22,24 @@ html {
   body {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 8vh auto; 
+    grid-template-rows: 8vh 22vh auto; 
+    text-align: center;
   }
 
   /* ID's */
+  #title {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
   #timer {
     grid-column: 1 / 2;
     grid-row: 2 / 3;    
   }
 
-  #title {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+  #server_test {
+    grid-column:  1 / 2;
+    grid-row: 3 / 4;
   }
 
   /* Classes */
@@ -61,14 +67,16 @@ html {
     justify-content: space-evenly;
   }
 
-  .timeInput {
+  .time_input {
     width: 80px;
   }
 
-  .submitButton {
-    background-color: magenta;
+  .button1 {
+    background-color: black;
+    color: white;
   }
 
-  .submitButton:hover {
-    background-color: blue;
+  .button1:active {
+    background-color: white;
+    color: black;
   }

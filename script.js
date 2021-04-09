@@ -1,6 +1,14 @@
+// Timer Variables
 var intervalName;
 var timerCount = 0;
+// API variables
+var apiKey1 = "5grBGkT7";
+var apiKey2 = "QZXnwbce";
 
+var serverResponse;
+
+// Function to check if there is already a timer running and start it
+// Also send a command to start the study mode on the arduino
 function startTimer(){
     if (timerCount != 0){
         clearInterval(intervalName);
@@ -8,8 +16,11 @@ function startTimer(){
     } else { timerTest(); }
 }
 
+// Function to run the actual timer
 function timerTest(){
     timerCount++;
+    //Clear the end html element 
+    document.getElementById("timerEnded").innerHTML = ""
     //Calculate the end time of the timer in Epoch (ms)
     var currentTime = new Date().getTime();
     var timerHours = document.getElementById("inputHour").value * 3600000;
@@ -42,7 +53,7 @@ function timerTest(){
 
         //Writing the values to the html and checking if timer is finished
         if (timeLeft < 0) {
-            clearInterval(myfunc);
+            clearInterval(timerFunc);
             document.getElementById("timerOutputHours").innerHTML = ""
             document.getElementById("timerOutputMins").innerHTML = ""
             document.getElementById("timerOutputDots").innerHTML = ""
@@ -64,4 +75,27 @@ function timerTest(){
     }, 1000)
 
     
+}
+
+function test() {
+    receiveData(apiKey2);
+    serverResponse = this.responseText;
+    console.log("Response from key: " + apiKey2);
+    console.log("> " + serverResponse);
+    document.getElementById("serverResponse").innerHTML = serverResponse;
+}
+
+function sendData(apiKey, value) {
+    
+}
+
+// Wat is de geeft XMLHttpRequest precies terug
+function receiveData(apiKey) {
+    var requestString = "http://cmd.camp:12345/get/" + apiKey;
+    console.log("Requesting data from: " + requestString);
+
+    var server = new XMLHttpRequest();
+    server.onload = test;
+    server.open("GET", requestString);
+    server.send();
 }
