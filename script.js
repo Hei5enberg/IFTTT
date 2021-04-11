@@ -2,22 +2,28 @@
 var intervalName;
 var timerCount = 0;
 // API variables
-var apiKey1 = "5grBGkT7";
-var apiKey2 = "QZXnwbce";
+
 
 var serverResponse;
 
 // Function to check if there is already a timer running and start it
 // Also send a command to start the study mode on the arduino
-function startTimer(){
-    if (timerCount != 0){
-        clearInterval(intervalName);
-        timerTest();
-    } else { timerTest(); }
+function receiveData(apiKey) {
+    var requestString = "http://cmd.camp:12345/get/" + apiKey;
+    console.log("Requesting data from: " + requestString);
+
+    var server = new XMLHttpRequest();
+
+    // REMOVE IF STATEMENT IN NON DEV VERSION
+    if (apiKey == apiKey1){
+        server.onload = storeServer1Data;
+    } else { server.onload = storeServer1Data2; }
+    
+    server.open("GET", requestString);
+    server.send();
 }
 
-// Function to run the actual timer
-function timerTest(){
+function runTimer(){
     timerCount++;
     //Clear the end html element 
     document.getElementById("timerEnded").innerHTML = ""
@@ -77,28 +83,52 @@ function timerTest(){
     
 }
 
-function test() {
-    receiveData(apiKey2);
+function sendData(apiKey, value) {
+    var requestString = "http://cmd.camp:12345/send/" + apiKey + "/" + value;
+    var server = new XMLHttpRequest();
+    server.open("GET", requestString);
+    server.send();
+}
+
+function startTimer(){
+    if (timerCount != 0){
+        clearInterval(intervalName);
+        runTimer();
+    } else { runTimer(); }
 }
 
 function storeServer1Data() {
     serverResponse = this.responseText;
-    console.log("Response from key: " + apiKey2);
+    console.log("Response from key: " + apiKey1);
     console.log("> " + serverResponse);
     document.getElementById("serverResponse").innerHTML = serverResponse;
 }
 
-function sendData(apiKey, value) {
-    
+
+// SCRAP THESE
+function test() {
+    console.log("RECEIVING DATA");
+    receiveData(apiKey1);
 }
 
-// Wat is de geeft XMLHttpRequest precies terug
-function receiveData(apiKey) {
-    var requestString = "http://cmd.camp:12345/get/" + apiKey;
-    console.log("Requesting data from: " + requestString);
+function test2() {
+    console.log("SENDING DATA");
+    sendData(apiKey1, "test_data_0");
+}
 
-    var server = new XMLHttpRequest();
-    server.onload = storeServer1Data;
-    server.open("GET", requestString);
-    server.send();
+function test3() {
+    console.log("RECEIVING DATA");
+    receiveData(apiKey2);
+}
+
+function test4() {
+    console.log("RECEIVING DATA");
+    sendData(apiKey2, "test_data_1");
+}
+
+function storeServer1Data2() {
+    serverResponse = this.responseText;
+    console.log("Response from key: " + apiKey2);
+    console.log("> " + serverResponse);
+    document.getElementById("serverResponse2").innerHTML = serverResponse;
 }

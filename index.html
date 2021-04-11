@@ -22,7 +22,7 @@
                     <p> : </p>
                     <input class="time_input" id="inputMinutes" placeholder="minuten" type="number" min="0" max="59" >
                 </div>
-                <button class="button1" type="submit" onclick="startTimer()">Start Timer</button>
+                <button class="button_1" type="submit" onclick="startTimer()">Start Timer</button>
             </div>
             <div class="flex_center">
                 <p id="timerOutputHours"></p>
@@ -35,8 +35,12 @@
 
     <div id="server_test">
         <h2>Data van server:</h2>
-        <p id="serverResponse"></p>
-        <button onclick="test()" class="button1">TEST</button>
+        <button onclick="test()" class="button_1">RECEIVE TEST 1</button>
+        <p id="serverResponse">-</p>
+        <button onclick="test3()" class="button_1">RECEIVE TEST 2</button>
+        <p id="serverResponse2">-</p>
+        <button onclick="test2()" class="button_1"> SEND TEST</button>
+        <button onclick="test4()" class="button_1"> SEND TEST 2</button>
     </div>
 </body>
 </html>

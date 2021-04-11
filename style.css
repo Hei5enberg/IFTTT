@@ -71,12 +71,12 @@ html {
     width: 80px;
   }
 
-  .button1 {
+  .button_1 {
     background-color: black;
     color: white;
   }
 
-  .button1:active {
+  .button_1:active {
     background-color: white;
     color: black;
   }
