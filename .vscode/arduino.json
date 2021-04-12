@@ -1,0 +1,4 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "Arduino/IFTTT_hoesje/IFTTT_hoesje.ino"
+}
