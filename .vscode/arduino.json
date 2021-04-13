@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "Arduino/IFTTT_hoesje/IFTTT_hoesje.ino"
+    "sketch": "Arduino/in-out-test/in-out-test.ino",
+    "port": "/dev/tty.usbmodem1421201"
 }

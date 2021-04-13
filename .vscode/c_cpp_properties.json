@@ -18,9 +18,8 @@
             "includePath": [
                 "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino",
                 "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/standard",
-                "/Users/gijsvis/Documents/Arduino/libraries/CMDWifi-0.6",
-                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/SPI/src",
-                "/Users/gijsvis/Documents/Arduino/libraries/WiFi101/src",
+                "/Users/gijsvis/Documents/Arduino/libraries/GY521",
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/Wire/src",
                 "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include",
                 "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include-fixed",
                 "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/avr/include"
