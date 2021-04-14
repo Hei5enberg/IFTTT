@@ -1,0 +1,90 @@
+/* CSS reset, dit niet aanpassen! */
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Hieronder mag je eigen CSS code */
+
+  /* HTML elements */
+  body {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 8vh 22vh auto; 
+    text-align: center;
+  }
+
+  /* ID's */
+  #title {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  #timer {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;    
+  }
+
+  #off_button {
+    
+  }
+
+  #server_test {
+    grid-column:  1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  /* Classes */
+  .center_vertically {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+  }
+  .spaced_from_left_px {
+    margin-left: 40px;
+  }
+
+  .flex_center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flex_center_spaced_evenly {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .time_input {
+    width: 80px;
+  }
+
+  .button_1 {
+    background-color: black;
+    color: white;
+  }
+
+  .button_1:active {
+    background-color: white;
+    color: black;
+  }
+
+  @media (max width: 1000px) {
+    
+  }

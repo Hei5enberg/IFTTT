@@ -37,6 +37,10 @@ html {
     grid-row: 2 / 3;    
   }
 
+  #off_button {
+    
+  }
+
   #server_test {
     grid-column:  1 / 2;
     grid-row: 3 / 4;
@@ -79,4 +83,8 @@ html {
   .button_1:active {
     background-color: white;
     color: black;
+  }
+
+  @media (max width: 1000px) {
+    
   }

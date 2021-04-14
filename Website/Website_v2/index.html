@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="script.js"></script>
+<body>
+    <div id="title">
+        <h1 class="flex_center_spaced_evenly">Header</h1>
+    </div>
+
+    <div id="timer">
+        <h2 class="flex_center_spaced_evenly">Timer</h2>
+        <div>
+            <div class="flex_center_spaced_evenly">
+                <div class="flex_center_spaced_evenly">
+                    <input class="time_input" id="inputHour" placeholder="uren" type="number" min="0" max="23">
+                    <p> : </p>
+                    <input class="time_input" id="inputMinutes" placeholder="minuten" type="number" min="0" max="59" >
+                </div>
+                <button class="button_1" type="submit" onclick="startTimer()">Start Timer</button>
+            </div>
+            <div class="flex_center">
+                <p id="timerOutputHours"></p>
+                <p id=timerOutputDots> : </p>
+                <p id="timerOutputMins"></p>
+                <h2 id="timerEnded"></h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="server_test">
+        <h2>Data van server:</h2>
+        <button onclick="test()" class="button_1">RECEIVE TEST 1</button>
+        <p id="serverResponse">-</p>
+        <button onclick="test3()" class="button_1">RECEIVE TEST 2</button>
+        <p id="serverResponse2">-</p>
+        <button onclick="test2()" class="button_1"> SEND TEST</button>
+        <button onclick="test4()" class="button_1"> SEND TEST 2</button>
+    </div>
+</body>
+</html>
