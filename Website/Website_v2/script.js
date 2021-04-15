@@ -2,8 +2,7 @@
 var intervalName;
 var timerCount = 0;
 // API variables
-var apiKey1 = "5grBGkT7";
-var apiKey2 = "QZXnwbce";
+
 
 var serverResponse;
 var userUsingCase = 0;
