@@ -9,38 +9,40 @@
 </head>
 <script src="script.js"></script>
 <body>
+    <div id="not_mobile_display">
+        <h1>Deze site werkt alleen op een telefoon</h1>
+    </div> 
+
     <div id="title">
-        <h1 class="flex_center_spaced_evenly">Header</h1>
     </div>
 
     <div id="timer">
-        <h2 class="flex_center_spaced_evenly">Timer</h2>
-        <div>
+        <img src="img/Timer-logo.jpeg" style="width: 90px; height: 89px;"></img>
+        <div class="flex_center_spaced_evenly">
             <div class="flex_center_spaced_evenly">
-                <div class="flex_center_spaced_evenly">
-                    <input class="time_input" id="inputHour" placeholder="uren" type="number" min="0" max="23">
-                    <p> : </p>
-                    <input class="time_input" id="inputMinutes" placeholder="minuten" type="number" min="0" max="59" >
-                </div>
-                <button class="button_1" type="submit" onclick="startTimer()">Start Timer</button>
+                <input class="time_input" id="inputHour" placeholder="UREN" type="number" min="0" max="23">
+                <input class="time_input" id="inputMinutes" placeholder="MINUTEN" type="number" min="0" max="59" >
             </div>
-            <div class="flex_center">
-                <p id="timerOutputHours"></p>
-                <p id=timerOutputDots> : </p>
-                <p id="timerOutputMins"></p>
-                <h2 id="timerEnded"></h2>
-            </div>
-        </div>
+        </div>     
     </div>
 
-    <div id="server_test">
-        <h2>Data van server:</h2>
-        <button onclick="test()" class="button_1">RECEIVE TEST 1</button>
-        <p id="serverResponse">-</p>
-        <button onclick="test3()" class="button_1">RECEIVE TEST 2</button>
-        <p id="serverResponse2">-</p>
-        <button onclick="test2()" class="button_1"> SEND TEST</button>
-        <button onclick="test4()" class="button_1"> SEND TEST 2</button>
+    <div id="timer-running">
+        <img src="img/Timer-logo.jpeg" style="width: 90px; height: 89px;"></img>
+        <div class="flex_center_spaced_evenly" id="timer-info">
+            <p class="timer_output" id="timerOutputHours"></p>
+            <p class="timer_output" id="timerOutputMins"></p>
+        </div> 
+    </div>
+
+    <div id="timer-finished">
+        <p id="timerEnded"></p>
+    </div>
+
+    <div id="buttons">
+        <!-- <button class="button_1">UIT</button>
+        <button class="button_1" type="submit" onclick="startTimer()">Start Timer</button> -->
+        <input type="image" src="img/Start-button.jpeg" onclick="startTimer()" style="width:76px; height: 72px;">
+        <input type="image" src="img/Stop-button.jpeg" onclick="stopTimer()" style="width: 73px; height:71px">
     </div>
 </body>
 </html>

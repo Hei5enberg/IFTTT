@@ -2,8 +2,8 @@
 var intervalName;
 var timerCount = 0;
 // API variables
-var apiKey1 = ;
-var apiKey2 = ;
+var apiKey1 = "5grBGkT7";
+var apiKey2 = "QZXnwbce";
 
 var serverResponse;
 
@@ -61,9 +61,11 @@ function runTimer(){
         //Writing the values to the html and checking if timer is finished
         if (timeLeft < 0) {
             clearInterval(timerFunc);
+            document.getElementById("timer-running").style.display = "none"
+            document.getElementById("timer-finished").style.display = "block"
+
             document.getElementById("timerOutputHours").innerHTML = ""
             document.getElementById("timerOutputMins").innerHTML = ""
-            document.getElementById("timerOutputDots").innerHTML = ""
             document.getElementById("timerEnded").innerHTML = "Taak voltooid!"
         }
         else if (timeLeft > 3600000) {
@@ -72,7 +74,6 @@ function runTimer(){
         }
         else if (timeLeft < 60000) {
             document.getElementById("timerOutputHours").innerHTML = "";
-            document.getElementById("timerOutputDots").innerHTML = ""
             document.getElementById("timerOutputMins").innerHTML = seconds + "s "
         }
         else {
@@ -91,11 +92,20 @@ function sendData(apiKey, value) {
     server.send();
 }
 
+//document.getElementById("timerRunning").style.display = "none";
 function startTimer(){
+    document.getElementById("timer").style.display = "none";
+    document.getElementById("timer-running").style.display = "block";
     if (timerCount != 0){
         clearInterval(intervalName);
         runTimer();
     } else { runTimer(); }
+}
+
+function stopTimer() {
+    document.getElementById("timer").style.display = "block";
+    document.getElementById("timer-running").style.display = "none";
+    clearInterval(intervalName);
 }
 
 function storeServer1Data() {

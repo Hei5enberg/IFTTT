@@ -7,8 +7,8 @@ char ssid[] = "AvansWlan";
 char pass[] = ""; 
 char server[] = "cmd.camp"; 
 int port = 12345; 
-char apiKey1[] = ;
-char apiKey2[] = ; 
+char apiKey1[] = "5grBGkT7";
+char apiKey2[] = "QZXnwbce"; 
 
 // Timer variables
 int timerStartTime;
@@ -34,7 +34,7 @@ void loop(){
         Serial.println(" ");
         Serial.println("DEVICE NOT IN USE");
     }
-    delay(50);
+    delay(1000);
 }
 
 bool checkGyro() {
