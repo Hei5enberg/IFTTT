@@ -1,20 +1,33 @@
 #include <CMDWifi.h>
-#include 
+#include "GY521.h"
 
 CMDWifi wifi;
+GY521 gyro(0x68);
+
+// Pins
+const int piezoPin = 2;
+
+// Loop frequency and maximum allowed time
+const int loopFrequency = 500; // Milliseconds
+const int allowedPickupTime = 5; // Seconds
+const int pickedUpCounterMax = (allowedPickupTime * 1000) / loopFrequency;
+int pickedUpCounter = 0;
 
 // WiFi settings
-char ssid[] = "AvansWlan"; 
+char ssid[] = ""; 
 char pass[] = ""; 
 char server[] = "cmd.camp"; 
 int port = 12345; 
-char apiKey1[] = "5grBGkT7";
-char apiKey2[] = "QZXnwbce"; 
+char apiKey1[] = "";
+char apiKey2[] = ""; 
 
 // Timer variables
 int timerStartTime;
 int alarmDelay = 120000; // 2 minutes
 bool timerRunning = false;
+
+// Web timer variable
+bool timerFirstLoop = false;
 
 void setup() {
     pinMode(3, OUTPUT);
@@ -27,19 +40,49 @@ void setup() {
 
 void loop(){
     int websiteDeviceState = receiveData(apiKey2);
-    if (websiteDeviceState == 1) {
-        Serial.println(" ");
-        Serial.println("DEVICE NOT IN USE");
-        deviceActive();
-    } else {
-        Serial.println(" ");
-        Serial.println("DEVICE NOT IN USE");
+    if (!timerFirstLoop) {
+        playSound("startup");
+        timerFirstLoop = true;
     }
-    delay(1000);
+
+    if (websiteDeviceState >= 1) {
+        Serial.println(" ");
+        Serial.println("TIMER RUNNING ON WEBAPP");
+        if (checkGyro()) {
+            playSound("alert");
+        }
+    } else if (websiteDeviceState == 0) {
+        timerFirstLoop = false;
+        playSound("finished");
+    }
+    delay(loopFrequency);
 }
 
 bool checkGyro() {
-    return false;
+    gyro.read();
+    int x = gyro.getGyroX();
+    int y = gyro.getGyroY();
+    int z = gyro.getGyroZ();
+
+    Serial.print("x: ");
+    Serial.println(x);
+    Serial.print("y: ");
+    Serial.println(y);
+    Serial.print("z: ");
+    Serial.println(z);
+
+    if (x != 0 || y != 0 || z != 0) {
+        if (pickedUpCounter >= pickedUpCounterMax) {
+            Serial.print("Device: have been picked up for ");
+            Serial.print(allowedPickupTime);
+            Serial.println(" seconds");
+            return true;
+        } else { pickedUpCounter++; }
+    } else if (x == 0 && y == 0 && z == 0) {
+        Serial.println("Device: not picked up");
+        pickedUpCounter = 0;
+        return false;
+    }
 }
 
 void deviceActive() {
@@ -60,6 +103,22 @@ void deviceActive() {
             sendData(apiKey1, 1);
         }
     }
+}
+
+void playSound(String soundName){
+    Serial.print("fnc playSound: Playing sound \"");
+    Serial.print(soundName);
+    Serial.println("\"");
+    if (soundName == "alert") {
+        for(int i = 0; i < 5; i++) {
+            tone(piezoPin, 10000, 100);
+            delay(100);
+            tone(piezoPin, 15000, 200);
+            delay(100);
+            tone(piezoPin, 30000, 200);
+            delay(100);
+        }
+    } else { Serial.println("fnc playSound: Sound name not recognized"); }
 }
 
 void sendData(char apiKey, int value) {
