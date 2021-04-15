@@ -4,4 +4,4 @@
 
 .vscode
 apiKeys.txt
-Arduino/config/**
+Arduino/config/config.h
