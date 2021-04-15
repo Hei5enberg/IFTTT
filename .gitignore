@@ -1,4 +1,7 @@
 .DS_Store
+.AppleDouble
+.LSOverride
+
 .vscode
 apiKeys.txt
 Arduino/config/**
