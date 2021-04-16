@@ -174,12 +174,12 @@ void playSound(String soundName){
     Serial.println("\"");
     if (soundName == "alarm") {
         for(int i = 0; i < 1; i++) {
-            ESPTone(3333, 1750);
-            delay(100);
+            ESPTone(3333, 1500);
+            delay(50);
             ESPTone(6666, 500);
-            delay(100);
-            ESPTone(9999, 1500);
-            delay(100);
+            delay(50);
+            ESPTone(9999, 500);
+            delay(75);
         }
     } else if (soundName == "startup") {
 		ESPTone(3000, 200);
@@ -198,7 +198,7 @@ void playSound(String soundName){
 		delay(50);
 		ESPTone(3000, 200);
 		delay(50);
-		ESPTone(2000, 2500);
+		ESPTone(2000, 1000);
 	}
  else { Serial.println("ESP: Sound name not recognized"); }
 }
