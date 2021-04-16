@@ -2,7 +2,8 @@
 var intervalName;
 var timerCount = 0;
 // API variables
-
+var apiKey1 = "";
+var apiKey2 = "";
 
 var serverResponse;
 var userUsingCase = 0;
@@ -63,12 +64,14 @@ function runTimer(){
         // Changing HTML elements
         receiveData(apiKey1);
         if (userUsingCase == 1) {
-            document.getElementById("user_interrupt_alert").style.display = "block"
-            document.getElementById("user_interrupt_alert").innerHTML = "GA VAN JE TELEFOON AF!"
+            document.getElementById("user_interrupt_alert").style.display = "flex"
+            document.getElementById("user_interrupt_text").innerHTML = "GA VAN JE TELEFOON AF!"
+            document.getElementById("user_interrupt_alert").style.backgroundColor = "red"
         } 
         else if (userUsingCase == 0) {
             document.getElementById("user_interrupt_alert").style.display = "none"
-            document.getElementById("user_interrupt_alert").innerHTML = "!"
+            document.getElementById("user_interrupt_text").innerHTML = ""
+            document.getElementById("user_interrupt_alert").style.backgroundColor = "white"
         } else { console.log("ERROR: userUsingCase variable broken"); }
 
         if (timeLeft < 0) {
@@ -79,7 +82,12 @@ function runTimer(){
 
             document.getElementById("timerOutputHours").innerHTML = ""
             document.getElementById("timerOutputMins").innerHTML = ""
-            document.getElementById("timerEnded").innerHTML = "Taak voltooid!"
+            document.getElementById("timerEnded").innerHTML = "Je hebt het vol gehouden!"
+            setTimeout(() => {
+                document.getElementById("timer-finished").style.display="none";
+                document.getElementById("timer").style.display = "block";
+                document.getElementById("timer-running").style.display = "none"; 
+        }, 7000)
         }
         else if (timeLeft < 60000) {
             document.getElementById("timerOutputHours").innerHTML = "";

@@ -3,7 +3,10 @@
 #include "GY521.h"
 
 // REMOVE THESE BEFORE PUSHING
-
+const char* ssid = "";
+const char* password = "";
+String apiKey1 = "";
+String apiKey2 = "";
 
 // Pins
 const int piezoPin = 15;
@@ -70,15 +73,15 @@ void setup() {
     Serial.print("ESP: Connected to WiFi network with IP Address: ");
     Serial.println(WiFi.localIP());
     Serial.println("");
+
+	// Setup finished tone
+	ESPTone(2000, 200);
+	delay(100);
+	ESPTone(2000, 200);
 }
 
 void loop() {
     if(WiFi.status() == WL_CONNECTED){
-		// if (!timerFirstLoop) {
-		// 	playSound("startup");
-		// 	timerFirstLoop = true;
-		// }
-
 		gyro.read();
 		int x = gyro.getGyroX();
 		int y = gyro.getGyroY();
@@ -93,6 +96,11 @@ void loop() {
 		Serial.println(z);
 
     if (x != 0 || y != 0 || z != 0 ){
+		if (!timerFirstLoop) {
+			playSound("startup");
+			timerFirstLoop = true;
+		}
+
 		int websiteTimeLeft = (receiveRequest(apiKey2)).toInt();
 		if (websiteTimeLeft > 0) {
 			if (pickedUpCounter > pickedUpCounterMax) {
@@ -103,7 +111,7 @@ void loop() {
 				playSound("alarm");
 			} else { pickedUpCounter++; }
 		} else if (websiteTimeLeft == 0) {
-			Serial.print("ESP: user picked up device but timer is finished");
+			Serial.println("ESP: user picked up device but timer is finished");
 			timerFirstLoop = false;
 			playSound("finished");
 			// Writing -1 to website key to ensure sound won't run on a loop
@@ -118,32 +126,7 @@ void loop() {
 			writeRequest(apiKey1, 0);
 		}
     }
-
-		// if (websiteTimeLeft >= 1) {
-		// 	Serial.print("Website: time left ");
-		// 	Serial.print(websiteTimeLeft);
-		// 	Serial.println("s");
-
-    //     if (x != 0 || y != 0 || z != 0) {
-    //       if (pickedUpCounter >= pickedUpCounterMax) {
-    //         Serial.print("ESP: user has been using device for ");
-    //         Serial.print(allowedPickupTime);
-    //         Serial.println(" seconds");
-    //         writeRequest(apiKey1, 1);
-    //       } else { pickedUpCounter++; }
-    //     } else if (x == 0 && y == 0 && z == 0) {
-    //         Serial.println("ESP: not picked up");
-    //         pickedUpCounter = 0;
-    //         writeRequest(apiKey1, 0);
-    //     }
-        
-    //   } else if (websiteTimeLeft == 0) {
-    //       timerFirstLoop = false;
-    //       playSound("finished");
-    //       // Writing a -1 so the finished sound won't be repeated
-    //       writeRequest(apiKey2, -1);
-    //   }
-      delay(loopFrequency);
+	delay(loopFrequency);
        
     } else { Serial.println("ESP: WiFi Disconnected"); }
 }
@@ -198,7 +181,26 @@ void playSound(String soundName){
             ESPTone(9999, 1500);
             delay(100);
         }
-    } else { Serial.println("ESP: Sound name not recognized"); }
+    } else if (soundName == "startup") {
+		ESPTone(3000, 200);
+		delay(100);
+		ESPTone(3000, 200);
+	} else if (soundName == "finished") {
+		ESPTone(500, 200);
+		delay(50);
+		ESPTone(1000, 200);
+		delay(50);
+		ESPTone(1500, 200);
+		delay(50);
+		ESPTone(2000, 200);
+		delay(50);
+		ESPTone(2500, 200);
+		delay(50);
+		ESPTone(3000, 200);
+		delay(50);
+		ESPTone(2000, 2500);
+	}
+ else { Serial.println("ESP: Sound name not recognized"); }
 }
 
 void ESPTone(int freq, int duration) {

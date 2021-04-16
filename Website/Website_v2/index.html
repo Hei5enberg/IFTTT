@@ -17,7 +17,7 @@
     </div>
 
     <div id="timer">
-        <img src="img/Timer-logo.jpeg" style="width: 90px; height: 89px;"></img>
+        <img src="img/timer2-02.png" style="width: 90px; height: 89px;"></img>
         <div class="flex_center_spaced_evenly">
             <div class="flex_center_spaced_evenly">
                 <input class="time_input" id="inputHour" placeholder="UREN" type="number" min="0" max="23">
@@ -26,26 +26,27 @@
         </div>     
     </div>
 
-    <div id="timer-running">
-        <img src="img/Timer-logo.jpeg" style="width: 90px; height: 89px;"></img>
-        <div id="user_interrupt_alert">
-
+    <div id="timer-running" class="flex_center">
+        <img src="img/timer2-02.png" style="width: 90px; height: 89px;"></img>
+        <div id="user_interrupt_alert" class="flex_center">
+            <p id="user_interrupt_text"></p>
         </div>
-        <div class="flex_center_spaced_evenly" id="timer-info">
+        <div class="flex_center" id="timer-info">
             <p class="timer_output" id="timerOutputHours"></p>
             <p class="timer_output" id="timerOutputMins"></p>
         </div> 
     </div>
 
     <div id="timer-finished">
-        <p id="timerEnded"></p>
+        <img src="img/timer2-02.png" style="width: 90px; height: 89px;"></img>
+        <p class="flex_center" id="timerEnded"></p>
     </div>
 
     <div id="buttons">
         <!-- <button class="button_1">UIT</button>
         <button class="button_1" type="submit" onclick="startTimer()">Start Timer</button> -->
-        <input type="image" src="img/Start-button.jpeg" onclick="startTimer()" style="width:76px; height: 72px;">
-        <input type="image" src="img/Stop-button.jpeg" onclick="stopTimer()" style="width: 73px; height:71px">
+        <input type="image" src="img/start.png" onclick="startTimer()" style="width:76px; height: 72px;">
+        <input type="image" src="img/stop.png" onclick="stopTimer()" style="width: 73px; height:71px">
     </div>
 </body>
 </html>
